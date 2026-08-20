@@ -9,15 +9,8 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Startseite">
-      <span class="brand-mark">CO</span>
-      <span>Care Overflow Pilot</span>
-    </a>
-    <nav>
-      <a href="#anbieter">Für Anbieter</a>
-      <a href="#familien">Für Familien</a>
-      <a href="#dashboard">Pilot-Dashboard</a>
-    </nav>
+    <a class="brand" href="#top" aria-label="Startseite"><span class="brand-mark">CO</span><span>Care Overflow Pilot</span></a>
+    <nav><a href="#anbieter">Für Anbieter</a><a href="#familien">Für Familien</a><a href="#dashboard">Pilot-Dashboard</a></nav>
   </header>
 
   <main id="top">
@@ -25,12 +18,9 @@
       <div class="hero-copy">
         <span class="eyebrow">Pilotphase · Ulm / Neu-Ulm · kostenlos</span>
         <h1>Freie Kapazitäten besser nutzen. Passende Anfragen regional weitervermitteln.</h1>
-        <p>Ein schlanker Pilot für anerkannte Anbieter von Alltagshilfe und haushaltsnaher Unterstützung. Wenn ein Anbieter eine Anfrage nicht übernehmen kann, suchen wir nach einer passenden freien Kapazität im lokalen Netzwerk.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#anbieter">Als Anbieter teilnehmen</a>
-          <a class="button ghost" href="#familien">Unterstützung suchen</a>
-        </div>
-        <p class="trust-note">Keine medizinische Beratung. Keine Pflegekassen-Abrechnung im Pilot. Matching wird vor jeder Weitergabe menschlich bestätigt.</p>
+        <p>Ein schlanker Pilot für anerkannte Anbieter von Alltagshilfe und haushaltsnaher Unterstützung. Wenn ein Anbieter eine Anfrage nicht übernehmen kann, prüfen wir, ob eine passende freie Kapazität im lokalen Netzwerk vorhanden ist.</p>
+        <div class="hero-actions"><a class="button primary" href="#anbieter">Pilot-Erfassung ansehen</a><a class="button ghost" href="#dashboard">Matching-Demo öffnen</a></div>
+        <p class="trust-note"><strong>v0.1 Hinweis:</strong> Die Formulare senden aktuell keine Daten an einen Server. Sie dienen der internen Erfassung während Pilotgesprächen und speichern ausschließlich lokal im verwendeten Browser.</p>
       </div>
       <aside class="hero-card" aria-label="So funktioniert der Pilot">
         <h2>So funktioniert es</h2>
@@ -51,9 +41,9 @@
 
     <section id="anbieter" class="section two-column">
       <div>
-        <span class="eyebrow">Für Anbieter</span>
-        <h2>Kapazität eintragen</h2>
-        <p>Teilen Sie nur die Informationen, die für ein Matching nötig sind. Im Pilot werden keine Patientendaten benötigt.</p>
+        <span class="eyebrow">Interne Pilot-Erfassung</span>
+        <h2>Provider-Kapazität erfassen</h2>
+        <p>Diese v0.1 ist für die manuelle Erfassung durch das Pilotteam gedacht. Remote-Onboarding wird erst aktiviert, wenn ein abgesichertes Backend vorhanden ist.</p>
       </div>
       <form id="provider-form" class="card form-card">
         <div class="grid-2">
@@ -70,18 +60,14 @@
           <label>Verfügbarkeit<select name="availability" required><option value="Vormittags">Vormittags</option><option value="Nachmittags">Nachmittags</option><option value="Flexibel">Flexibel</option><option value="Einzelne Slots">Einzelne Slots</option></select></label>
         </div>
         <label>Kapazitätsnotiz<textarea name="notes" rows="3" placeholder="z. B. Dienstag/Donnerstag vormittags, max. 10 km"></textarea></label>
-        <label class="check"><input type="checkbox" required name="consent" /> Ich bestätige, dass die Angaben für den Pilot gespeichert und für passende Matching-Anfragen genutzt werden dürfen.</label>
-        <button class="button primary" type="submit">Kapazität speichern</button>
+        <label class="check"><input type="checkbox" required name="consent" /> Die Angaben dürfen für den internen Pilot lokal erfasst und für Matching-Tests genutzt werden.</label>
+        <button class="button primary" type="submit">Lokal erfassen</button>
         <p id="provider-message" class="form-message" role="status"></p>
       </form>
     </section>
 
     <section class="section two-column alt">
-      <div>
-        <span class="eyebrow">Overflow</span>
-        <h2>Anfrage weitergeben</h2>
-        <p>Wenn Sie eine Anfrage nicht übernehmen können, geben Sie nur die für die Kapazitätssuche notwendigen Eckdaten weiter.</p>
-      </div>
+      <div><span class="eyebrow">Overflow</span><h2>Anfrage lokal erfassen</h2><p>Für Matching-Tests werden nur die für die Kapazitätssuche notwendigen Eckdaten erfasst.</p></div>
       <form id="overflow-form" class="card form-card">
         <div class="grid-2">
           <label>PLZ<input name="postalCode" required pattern="[0-9]{5}" placeholder="89079" /></label>
@@ -93,17 +79,13 @@
         </div>
         <label>Start<select name="start" required><option>So schnell wie möglich</option><option>Innerhalb 7 Tage</option><option>Innerhalb 30 Tage</option><option>Später</option></select></label>
         <label class="check"><input type="checkbox" required /> Keine Namen, Diagnosen oder vollständigen Adressen wurden eingegeben.</label>
-        <button class="button primary" type="submit">An Netzwerk senden</button>
+        <button class="button primary" type="submit">Lokal in Matching-Pool erfassen</button>
         <p id="overflow-message" class="form-message" role="status"></p>
       </form>
     </section>
 
     <section id="familien" class="section two-column">
-      <div>
-        <span class="eyebrow">Für Familien</span>
-        <h2>Unterstützung suchen</h2>
-        <p>Im Pilot erfassen wir zuerst nur Bedarf, Region und Termin. Medizinische Details sind für die Kapazitätssuche nicht erforderlich.</p>
-      </div>
+      <div><span class="eyebrow">Für Familien · Demo</span><h2>Bedarf erfassen</h2><p>Die Familienansicht zeigt, welche Informationen später für eine Anfrage nötig wären. In v0.1 wird noch keine Anfrage online versendet.</p></div>
       <form id="family-form" class="card form-card">
         <div class="grid-2">
           <label>PLZ<input name="postalCode" required pattern="[0-9]{5}" placeholder="89231" /></label>
@@ -114,55 +96,28 @@
           <label>Finanzierung<select name="funding"><option>§45b prüfen</option><option>Selbstzahler</option><option>Noch unklar</option></select></label>
         </div>
         <label>Kontakt-E-Mail<input type="email" required name="email" placeholder="name@example.de" /></label>
-        <label class="check"><input type="checkbox" required /> Ich stimme zu, dass diese Angaben für die Suche nach einem passenden Anbieter im Pilot verarbeitet werden.</label>
-        <button class="button primary" type="submit">Anfrage erstellen</button>
+        <label class="check"><input type="checkbox" required /> Ich verstehe, dass diese Demoangaben ausschließlich lokal in diesem Browser gespeichert werden.</label>
+        <button class="button primary" type="submit">Demo-Anfrage lokal erfassen</button>
         <p id="family-message" class="form-message" role="status"></p>
       </form>
     </section>
 
     <section id="dashboard" class="section dashboard-section">
-      <div class="dashboard-head">
-        <div><span class="eyebrow">Interner Pilot</span><h2>Matching-Dashboard</h2></div>
-        <button id="seed-demo" class="button ghost" type="button">Demo-Daten laden</button>
-      </div>
-      <div class="dashboard-metrics">
-        <article><span>Anbieter</span><strong id="metric-providers">0</strong></article>
-        <article><span>Offene Anfragen</span><strong id="metric-open">0</strong></article>
-        <article><span>Matches</span><strong id="metric-matched">0</strong></article>
-        <article><span>Match-Rate</span><strong id="metric-rate">0%</strong></article>
-      </div>
-      <div class="dashboard-grid">
-        <div class="card table-card">
-          <h3>Offene Anfragen</h3>
-          <div id="requests-list" class="list-empty">Noch keine Anfragen.</div>
-        </div>
-        <div class="card table-card">
-          <h3>Provider Capacity</h3>
-          <div id="providers-list" class="list-empty">Noch keine Anbieter.</div>
-        </div>
-      </div>
-      <div class="card match-card">
-        <h3>Match-Vorschläge</h3>
-        <div id="matches-list" class="list-empty">Sobald Anbieter und Anfragen vorhanden sind, erscheinen hier kompatible Vorschläge.</div>
-      </div>
-      <div class="dashboard-actions">
-        <button id="export-data" class="button ghost" type="button">Pilotdaten exportieren</button>
-        <button id="clear-data" class="button danger" type="button">Lokale Testdaten löschen</button>
-      </div>
-      <p class="small-print">Pilot-Hinweis: Dieses Dashboard speichert Daten in dieser v0.1 ausschließlich lokal im Browser (localStorage). Für einen öffentlichen Produktivbetrieb ist ein abgesichertes Backend mit Rollen, DSGVO-Konzept und Zugriffskontrollen erforderlich.</p>
+      <div class="dashboard-head"><div><span class="eyebrow">Interner Pilot</span><h2>Matching-Dashboard</h2></div><button id="seed-demo" class="button ghost" type="button">Demo-Daten laden</button></div>
+      <div class="dashboard-metrics"><article><span>Anbieter</span><strong id="metric-providers">0</strong></article><article><span>Offene Anfragen</span><strong id="metric-open">0</strong></article><article><span>Matches</span><strong id="metric-matched">0</strong></article><article><span>Match-Rate</span><strong id="metric-rate">0%</strong></article></div>
+      <div class="dashboard-grid"><div class="card table-card"><h3>Offene Anfragen</h3><div id="requests-list" class="list-empty">Noch keine Anfragen.</div></div><div class="card table-card"><h3>Provider Capacity</h3><div id="providers-list" class="list-empty">Noch keine Anbieter.</div></div></div>
+      <div class="card match-card"><h3>Match-Vorschläge</h3><div id="matches-list" class="list-empty">Sobald Anbieter und Anfragen vorhanden sind, erscheinen hier kompatible Vorschläge.</div></div>
+      <div class="dashboard-actions"><button id="export-data" class="button ghost" type="button">Pilotdaten exportieren</button><button id="clear-data" class="button danger" type="button">Lokale Testdaten löschen</button></div>
+      <p class="small-print">Dieses Dashboard speichert Daten in v0.1 ausschließlich lokal im Browser (localStorage). Es ist noch kein öffentliches Intake-System. Vor Remote-Onboarding oder echter Familiennutzung ist ein abgesichertes Backend mit Rollen, DSGVO-Konzept und Zugriffskontrollen erforderlich.</p>
     </section>
 
     <section class="section legal-grid">
       <article class="card"><h2>Datensparsamkeit</h2><p>Für ein erstes Kapazitätsmatching reichen PLZ, Leistung, Zeitfenster, Rhythmus und Finanzierungsart. Diagnosen und Pflegeunterlagen gehören nicht in den Overflow-Datensatz.</p></article>
-      <article class="card"><h2>Pilotgrenze</h2><p>Keine medizinische Beratung, keine Pflegekassenvertretung, keine Abrechnung und keine Garantie einer verfügbaren Leistung. Jeder Match wird vor einer Kontaktherstellung manuell bestätigt.</p></article>
+      <article class="card"><h2>Pilotgrenze</h2><p>Keine medizinische Beratung, keine Pflegekassenvertretung, keine Abrechnung und keine Garantie einer verfügbaren Leistung. Jeder echte Match wird vor einer Kontaktherstellung manuell bestätigt.</p></article>
     </section>
   </main>
 
-  <footer>
-    <div><strong>Care Overflow Pilot</strong><span>Ulm / Neu-Ulm</span></div>
-    <div class="footer-links"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
-  </footer>
-
+  <footer><div><strong>Care Overflow Pilot</strong><span>Ulm / Neu-Ulm</span></div><div class="footer-links"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div></footer>
   <script src="assets/app.js"></script>
 </body>
 </html>
