@@ -51,6 +51,10 @@ Dann `http://localhost:8080` öffnen.
 
 Der Button **Demo-Daten laden** erzeugt einen Testanbieter und eine kompatible Anfrage. Danach erscheint ein Match-Vorschlag, der manuell bestätigt werden kann.
 
+## Validierung v0.1
+
+Die JavaScript-Syntax von `assets/app.js` wurde vor dem Merge-Gate manuell mit `node --check` validiert. Ein temporärer GitHub-Actions-Workflow und selbst ein minimaler Runner-Smoke-Test wurden von GitHub beendet, bevor irgendein Job-Step startete. Diese CI-Checks wurden deshalb aus dem PR entfernt, damit ein Infrastrukturproblem des GitHub-hosted Runners nicht als Produktfehler interpretiert wird. CI kann später wieder aktiviert werden.
+
 ## GitHub Pages
 
 Nach dem Merge nach `main` kann der Workflow `.github/workflows/pages.yml` die statische Demo deployen. In den Repository Settings muss GitHub Pages auf **GitHub Actions** gestellt sein. Ein Pages-Deployment macht aus der v0.1 noch kein Remote-Intake-System; die Datenspeicherung bleibt browserlokal.
