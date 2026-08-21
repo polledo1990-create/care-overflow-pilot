@@ -1,0 +1,17 @@
+name: Runner smoke test
+
+on:
+  pull_request:
+    branches: ["main"]
+  push:
+    branches: ["agent/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Runner started
+        run: echo "GitHub-hosted runner is working"
