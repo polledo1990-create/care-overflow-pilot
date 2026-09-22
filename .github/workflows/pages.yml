@@ -23,6 +23,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Generate public Supabase runtime config
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          test -n "$SUPABASE_URL"
+          test -n "$SUPABASE_PUBLISHABLE_KEY"
+          python - <<'PY'
+          import json, os
+          config = {
+              "url": os.environ["SUPABASE_URL"],
+              "publishableKey": os.environ["SUPABASE_PUBLISHABLE_KEY"],
+          }
+          with open("assets/runtime-config.js", "w", encoding="utf-8") as f:
+              f.write("window.CARE_OVERFLOW_CONFIG = ")
+              json.dump(config, f)
+              f.write(";\n")
+          PY
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

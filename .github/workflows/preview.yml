@@ -1,0 +1,59 @@
+name: Validate preview build
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate required files
+        run: |
+          test -f index.html
+          test -f assets/app.js
+          test -f assets/styles.css
+
+      - name: Generate preview runtime config
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          test -n "$SUPABASE_URL"
+          test -n "$SUPABASE_PUBLISHABLE_KEY"
+          python - <<'PY'
+          import json, os
+          with open('assets/runtime-config.js','w',encoding='utf-8') as f:
+              f.write('window.CARE_OVERFLOW_CONFIG = ')
+              json.dump({
+                  'url': os.environ['SUPABASE_URL'],
+                  'publishableKey': os.environ['SUPABASE_PUBLISHABLE_KEY']
+              }, f)
+              f.write(';\n')
+          PY
+
+      - name: Validate JavaScript syntax
+        run: node --check assets/app.js
+
+      - name: Validate runtime config generation
+        run: |
+          test -s assets/runtime-config.js
+          grep -q "CARE_OVERFLOW_CONFIG" assets/runtime-config.js
+
+      - name: Build preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: care-overflow-preview
+          path: |
+            index.html
+            impressum.html
+            datenschutz.html
+            assets/
+          retention-days: 7
